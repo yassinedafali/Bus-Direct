@@ -1,0 +1,30 @@
+.rass {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 10px;
+}
+
+.titre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 24px;
+}
+
+.titre i {
+    padding-top: 0;
+}
+
+.price {
+    background-color: white;
+    padding: 7px;
+    border-radius: 12px;
+}
+
