@@ -2,21 +2,24 @@ const nomInput = document.getElementById("nom");
 const seatSelect = document.getElementById("seat-select");
 const reserveForm = document.getElementById("reserve-form");
 const reserveMsg = document.getElementById("reserve-msg");
-
 const libreEl = document.querySelector(".libre");
 const occupeEl = document.querySelector(".occupe");
 const priceEl = document.querySelector(".totalprice");
-const fillRateEl = document.getElementById("fill-rate");
+const fillRateEl = document.getElementById("fill-rate");function render() {
+  renderSeats();
+  renderSelects(seatSelect);
+  renderSelects(newselect);   // ← أضفنا هذا
+  renderStats();
+  save();
+}
 const revenueDetailEl = document.getElementById("revenue-detail");
 const PRICE = 80;
  let seats = JSON.parse(localStorage.getItem("seats")) ||
   Array.from({ length: 20 }, (_, i) => ({ number: i + 1, passenger: null }));
-
 const freeSeats = () => seats.filter(s => !s.passenger);
 const save = () => localStorage.setItem("seats", JSON.stringify(seats));
 const nameExists = name =>
   seats.some(s => s.passenger && s.passenger.toLowerCase() === name.toLowerCase());
-  
 function renderSeats() {
   const cabinGrid = document.getElementById("lblays");
   cabinGrid.innerHTML = "";                       
@@ -65,18 +68,19 @@ function renderStats() {
 function render() {
   renderSeats();
   renderSelects(seatSelect);
+  renderSelects(newselect);   
   renderStats();
   save();
 }
 let msgTimer;
+let timers={};
 function notify(el, text, isError = false) {
-  clearTimeout(msgTimer);
+ clearTimeout(timers[el.id]);
   el.textContent = text;
   el.className = "text-sm font-medium min-h-[1.25rem] " + (isError ? "text-red-600" : "text-green-600");
   msgTimer = setTimeout(() => { el.textContent = ""; }, 3000);
 }
-
-    
+   
 reserveForm.addEventListener("submit", e => {
   e.preventDefault();
   const name = nomInput.value.trim();
@@ -107,12 +111,14 @@ tabReserve.addEventListener("click", () => {
   editContent.hidden = true;
   cancelContent.hidden = true;
 });
+
 tabEdit.addEventListener("click", () => {
   reserveContent.hidden = true;
   editContent.hidden = false;
   cancelContent.hidden = true;
   editContent.classList.remove("hidden");
 });
+
 tabCancel.addEventListener("click", () => {
   reserveContent.hidden = true;
   editContent.hidden = true;
@@ -121,28 +127,19 @@ tabCancel.addEventListener("click", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   render();
-});
+});////////
 ////////partie modifer
 const namecheck=document.getElementById("edit-name")
 const newname=document.getElementById("new-name")
 const confiermeedit=document.getElementById("btn-modifer")
 const newselect=document.getElementById("newselect")
 const modifieMsg=document.getElementById("Modifier-msg")
-function render2() {
-  renderSeats();
-  renderSelects(newselect);
-  renderStats();
-  save();
-}
+
 renderSelects(newselect);
-const nameExists2 = (name,ingnoreseat=null) =>seats.some(s=> s.passenger && s.number!==ingnoreseat && s.passenger.toLowerCase()===name.toLowerCase());
+const nameExists2 = (name,seat=null) =>seats.some(s=> s.passenger && s.number!==seat && s.passenger.toLowerCase()===name.toLowerCase());
   seats.some(s => s.passenger && s.passenger.toLowerCase() === name.toLowerCase());
   
-
-  
 ///////twrak
- 
-
 confiermeedit.addEventListener("click",e=>{
   const oldName=namecheck.value.trim();
   // t9lab wach 3ndna dak smiya 
@@ -161,7 +158,7 @@ confiermeedit.addEventListener("click",e=>{
     : current;
     current.passenger = null;
   target.passenger = name;
-    render2();
+    render();
   namecheck.value = "";
   newname.value = "";
   notify(modifieMsg, `Réservation modifiée : siège ${target.number}.`);
@@ -177,13 +174,24 @@ btnSuprime.addEventListener("click",()=>{
    const current = seats.find(s =>
     s.passenger && s.passenger.toLowerCase() === Suprimeuser.toLowerCase()
   );
+  if(!current)return notify(annulermsg,"Passager introuvable.",true)
+    const name=current.passenger;
   current.passenger=null;
   render();
   SuprimeName.value = "";
   notify(annulermsg, `Réservation de ${name} annulée : siège ${current.number} libre.`)
 })
-////////page2
+
 const passage=document.getElementById("passager")
 const number=document.getElementById("number")
-const status=document.getElementById("status")
-
+const statusi=document.getElementById("status")
+const ouccepe=seats-freeSeats
+const price=document.getElementById("price")
+ouccepe.forEach(seat=>{
+  passage.innerHTML+=`${seat.passenger}`;
+  number.innerHTML+=`${seat.number}`;
+  statusi.innerHTML+="confirme"
+  price.innerHTML+="80DH"
+  render();
+  
+})

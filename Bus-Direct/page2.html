@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="BusDirect facilite la gestion des réservations de bus entre Safi et Marrakech.">
+        content="BusDirect : liste des billets réservés pour la ligne Safi - Marrakech.">
     <title>BusDirect | Billets</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="grid grid-cols-1 md:grid-cols-[15%_85%] min-h-screen bg-gray-500 font-sans">
@@ -17,43 +16,45 @@
         <img src="img/logo.jpg" alt="BusDirect" class="w-[155px] max-w-[90%] h-9 ml-4">
         <nav aria-label="Navigation principale">
             <ul class="flex md:flex-col gap-2 mt-6 list-none p-0">
-                <li><a href="PAge.html" aria-current="page"
-                        class="block text-white px-4 py-2 bg-white/15">Réservations</a></li>
-                <li><a href="#page2"
-                        class="block text-white px-4 py-2 hover:bg-white/15">Billets</a></li>
+                <li><a href="PAge.html"
+                        class="block text-white px-4 py-2 hover:bg-white/15">Réservations</a></li>
+                <li><a href="#bilets" aria-current="page"
+                        class="block text-white px-4 py-2 bg-white/15">Billets</a></li>
             </ul>
         </nav>
-    </header>  
+    </header>
 
-
-    <main  class="pb-6" >
-
-        <!-- header2  -->
+    <main class="pb-6">
+<!-- ait header -->
         <section class="flex justify-between items-center bg-white px-6 py-4">
             <div>
-                <h1 class="text-2xl font-bold">reservations</h1>
-                <!-- <p class="text-gray-500">Gestion des réservations — Safi → Marrakech</p> -->
+                <h1 class="text-2xl font-bold">Billets</h1>
+                <p class="text-gray-500">Billets réservés — Safi → Marrakech</p>
             </div>
-            <i class="fa-solid fa-user" style="color: #70747c;"></i>
+            <i class="fa-solid fa-ticket text-2xl text-amber-600" aria-hidden="true"></i>
         </section>
-        <section class="grid-row md:grid-row-[55%_15%_15%_15%] info">
-            <div class="bg-gray-500">
-                <h2 id="passager" class="bg-red-700">passager</h2>
-                
-            </div>
-            <div class="border-gray-200">
-                <h2 id="number"class="bg-blue-700">Place</h2>
-            </div>
-            <div class="bg-red-600">
-                <h2 id="price">Tarif</h2>
-                
-            </div>
-            <div class="bg-blue-700">
-                <h2 id="status"bg-g>status</h2>
-            </div>
 
+     <section class="p-6">
 
-        </section>
+    <!-- title -->
+    <div class="hidden md:grid grid-cols-4 gap-4 px-4 pb-2 text-sm font-semibold text-white" aria-hidden="true">
+        <span>Passager</span>
+        <span>Place</span>
+        <span>Tarif</span>
+        <span>Statut</span>
+    </div>
+
+    <!-- data de tick-->
+    <ul id="tickets-list" class="flex flex-col gap-3 list-none p-0"></ul>
+
+    <p id="empty-msg" class="hidden mt-4 text-white">
+        Aucun billet réservé pour le moment.
+    </p>
+
+</section>
+
     </main>
+
+    <script src="js/file.js" defer></script>
 </body>
 </html>
