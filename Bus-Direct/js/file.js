@@ -21,7 +21,7 @@ const save = () => localStorage.setItem("seats", JSON.stringify(seats));
 const nameExists = name =>
   seats.some(s => s.passenger && s.passenger.toLowerCase() === name.toLowerCase());
 function renderSeats() {
-  const cabinGrid = document.getElementById("lblays");
+  const cabinGrid = document.getElementById("seats");
   cabinGrid.innerHTML = "";                       
   seats.forEach(seat => {
     const seatCard = document.createElement("div");
@@ -37,6 +37,7 @@ function renderSeats() {
       <span class="badge text-[10px] font-semibold px-2 py-0.5 rounded-full ${
         seat.passenger ? "bg-white text-red-700" : "bg-gray-100 text-gray-700"
       }"></span>
+      <i class="fa-solid fa-user text-gray-500"></i>
     `;
     
     seatCard.querySelector(".badge").textContent =
@@ -77,10 +78,10 @@ let timers={};
 function notify(el, text, isError = false) {
  clearTimeout(timers[el.id]);
   el.textContent = text;
-  el.className = "text-sm font-medium min-h-[1.25rem] " + (isError ? "text-red-600" : "text-green-600");
-  msgTimer = setTimeout(() => { el.textContent = ""; }, 3000);
+  el.className = "text-sm font-medium min-h-[1.25rem] " + (isError ? "text-red-600" : "text-green-600")
+  timers[el.id]= setTimeout(() => { el.textContent = ""; }, 3000);
 }
-   
+
 reserveForm.addEventListener("submit", e => {
   e.preventDefault();
   const name = nomInput.value.trim();
@@ -127,7 +128,7 @@ tabCancel.addEventListener("click", () => {
 });
 document.addEventListener("DOMContentLoaded", () => {
   render();
-});////////
+});
 ////////partie modifer
 const namecheck=document.getElementById("edit-name")
 const newname=document.getElementById("new-name")
@@ -139,7 +140,28 @@ renderSelects(newselect);
 const nameExists2 = (name,seat=null) =>seats.some(s=> s.passenger && s.number!==seat && s.passenger.toLowerCase()===name.toLowerCase());
   seats.some(s => s.passenger && s.passenger.toLowerCase() === name.toLowerCase());
  
-///////BTN
+
+const cabinGrid = document.getElementById("seats");
+///pour if click sur seat ->reserve
+cabinGrid.addEventListener("click", e => {
+  const card = e.target.closest("[data-seat]");
+  if (!card) return;
+
+  const seat = seats.find(s => s.number === Number(card.dataset.seat));
+  
+  if (seat.passenger) {
+    editSelect.value = seat.number; 
+    tabEdit.click();
+  } else {
+    seatSelect.value = seat.number;
+    tabReserve.click();
+    nomInput.focus();
+  }
+  render();
+
+
+});
+/////click sur btn
 confiermeedit.addEventListener("click",e=>{
   const oldName=namecheck.value.trim();
   // cherche le nom wach 3ndna
@@ -148,7 +170,7 @@ confiermeedit.addEventListener("click",e=>{
   );
   //est ne pas trouve 
     if (!current) return notify(modifieMsg, "Passager introuvable.", true);
-    //ila l9inah nakdo smiya jdida wl nklo smiya L9dima ila bra
+    //if user contine le meme nom
       const name = newname.value.trim() || current.passenger;
       
     if (nameExists2(name, current.number))
@@ -158,6 +180,7 @@ confiermeedit.addEventListener("click",e=>{
     : current;
     current.passenger = null;
   target.passenger = name;
+
     render();
   namecheck.value = "";
   newname.value = "";
@@ -181,4 +204,3 @@ btnSuprime.addEventListener("click",()=>{
   SuprimeName.value = "";
   notify(annulermsg, `Réservation de ${name} annulée : siège ${current.number} libre.`)
 })
-

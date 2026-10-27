@@ -14,7 +14,7 @@
 <body class="grid grid-cols-1 md:grid-cols-[15%_85%] min-h-screen bg-gray-500 font-sans">
 
     <header class="bg-gray-500 md:h-screen md:sticky md:top-0 py-5 border-r-4">
-        <img src="img/logo.jpg" alt="BusDirect" class="w-[155px] max-w-[90%] h-9 ml-4">
+        <img src="img/logo.png" alt="BusDirect" class="w-[80px]  ml-4">
         <nav aria-label="Navigation principale">
             <ul class="flex md:flex-col gap-2 mt-6 list-none p-0">
                 <li><a href="#index" aria-current="page"
@@ -25,7 +25,7 @@
         </nav>
     </header>
     
-    <main class="pb-6">
+    <main class="pb-6" id="index">
 
         <!-- header2  -->
         <section class="flex justify-between items-center bg-white px-6 py-4">
@@ -33,7 +33,7 @@
                 <h1 class="text-2xl font-bold">Tableau de bord</h1>
                 <p class="text-gray-500">Gestion des réservations — Safi → Marrakech</p>
             </div>
-            <i class="fa-solid fa-calendar text-2xl text-amber-600" aria-hidden="true"></i>
+            <a href="bilets.html"><i class="fa-solid fa-calendar text-2xl text-amber-600" aria-hidden="true"></i></a>
         </section>
 
         
@@ -96,8 +96,8 @@
 
        
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
-
-            <div id="lblays"
+            
+            <div id="seats"
                 class="grid grid-cols-[1fr_1fr_30px_1fr_1fr] gap-y-5 gap-x-5 w-full max-w-md mx-auto bg-gray-500 px-2 py-4">
             </div>
 
@@ -107,21 +107,21 @@
                 
                 <div class="flex w-full items-center gap-2 rounded-xl bg-gray-100 p-2 mb-5">
                     <button id="tab-reserve" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
                         Réserver
                     </button>
                     <button id="tab-edit" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
                         Modifier
                     </button>
                     <button id="tab-cancel" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
                         Annuler
                     </button>
                 </div>
-
+                
                 <!-- Contenu Réserver -->
-                <div id="reserve-content">
+                <div id="reserve-content" >
 
                     <h2 class="text-xl font-bold mb-1">Nouvelle réservation</h2>
                     <p class="text-sm text-gray-500 mb-5">
@@ -158,11 +158,10 @@
                         
                         <p id="reserve-msg" role="status" aria-live="polite"
                             class="text-sm font-medium min-h-[1.25rem]"></p>
-
                     </form>
                 </div>
                 <!-- Contenu Modifier (tBdal smiya) -->
-                <div id="edit-content" class="hidden">
+                <div id="edit-content" class="hidden ">
 
                     <h2 class="text-xl font-bold mb-4">Modifier une réservation</h2>
                     
