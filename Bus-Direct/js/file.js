@@ -8,7 +8,7 @@ const priceEl = document.querySelector(".totalprice");
 const fillRateEl = document.getElementById("fill-rate");function render() {
   renderSeats();
   renderSelects(seatSelect);
-  renderSelects(newselect);   // ← أضفنا هذا
+  renderSelects(newselect);   
   renderStats();
   save();
 }
@@ -38,7 +38,7 @@ function renderSeats() {
         seat.passenger ? "bg-white text-red-700" : "bg-gray-100 text-gray-700"
       }"></span>
     `;
-
+    
     seatCard.querySelector(".badge").textContent =
       seat.passenger ?  seat.passenger : "Libre";
 
@@ -90,9 +90,9 @@ reserveForm.addEventListener("submit", e => {
   const seat = seatSelect.value
     ? seats.find(s => s.number === Number(seatSelect.value))
     : freeSeats()[0];
-
+////msg de bus est terminie
   if (!seat) return notify(reserveMsg, "Le bus est complet.", true);
-
+  
   seat.passenger = name;
   render();
   reserveForm.reset();
@@ -138,15 +138,15 @@ const modifieMsg=document.getElementById("Modifier-msg")
 renderSelects(newselect);
 const nameExists2 = (name,seat=null) =>seats.some(s=> s.passenger && s.number!==seat && s.passenger.toLowerCase()===name.toLowerCase());
   seats.some(s => s.passenger && s.passenger.toLowerCase() === name.toLowerCase());
-  
-///////twrak
+ 
+///////BTN
 confiermeedit.addEventListener("click",e=>{
   const oldName=namecheck.value.trim();
-  // t9lab wach 3ndna dak smiya 
+  // cherche le nom wach 3ndna
   const current = seats.find(s =>
     s.passenger && s.passenger.toLowerCase() === oldName.toLowerCase()
   );
-  //ila mL9inahch 
+  //est ne pas trouve 
     if (!current) return notify(modifieMsg, "Passager introuvable.", true);
     //ila l9inah nakdo smiya jdida wl nklo smiya L9dima ila bra
       const name = newname.value.trim() || current.passenger;
@@ -182,16 +182,3 @@ btnSuprime.addEventListener("click",()=>{
   notify(annulermsg, `Réservation de ${name} annulée : siège ${current.number} libre.`)
 })
 
-const passage=document.getElementById("passager")
-const number=document.getElementById("number")
-const statusi=document.getElementById("status")
-const ouccepe=seats-freeSeats
-const price=document.getElementById("price")
-ouccepe.forEach(seat=>{
-  passage.innerHTML+=`${seat.passenger}`;
-  number.innerHTML+=`${seat.number}`;
-  statusi.innerHTML+="confirme"
-  price.innerHTML+="80DH"
-  render();
-  
-})

@@ -16,7 +16,7 @@
         <img src="img/logo.jpg" alt="BusDirect" class="w-[155px] max-w-[90%] h-9 ml-4">
         <nav aria-label="Navigation principale">
             <ul class="flex md:flex-col gap-2 mt-6 list-none p-0">
-                <li><a href="PAge.html"
+                <li><a href="index.html"
                         class="block text-white px-4 py-2 hover:bg-white/15">Réservations</a></li>
                 <li><a href="#bilets" aria-current="page"
                         class="block text-white px-4 py-2 bg-white/15">Billets</a></li>
@@ -35,26 +35,29 @@
         </section>
 
      <section class="p-6">
+     <div class="bg-white rounded-2xl border border-brand-border p-6 shadow-sm">
+    <h3 class="text-md font-bold mb-3">Liste des Passagers</h3>
 
-    <!-- title -->
-    <div class="hidden md:grid grid-cols-4 gap-4 px-4 pb-2 text-sm font-semibold text-white" aria-hidden="true">
-        <span>Passager</span>
-        <span>Place</span>
-        <span>Tarif</span>
-        <span>Statut</span>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-brand-soft text-brand-body text-xs uppercase">
+                <tr>
+                    <th class="px-4 py-3">Passager</th>
+                    <th class="px-4 py-3">Siège</th>
+                    <th class="px-4 py-3">Tarif</th>
+                    <th class="px-4 py-3">Statut</th>
+                </tr>
+            </thead>
+
+            <tbody id="passenger" class="divide-y divide-brand-border">
+            </tbody>
+        </table>
     </div>
-
-    <!-- data de tick-->
-    <ul id="tickets-list" class="flex flex-col gap-3 list-none p-0"></ul>
-
-    <p id="empty-msg" class="hidden mt-4 text-white">
-        Aucun billet réservé pour le moment.
-    </p>
-
+</div>
 </section>
 
     </main>
-
-    <script src="js/file.js" defer></script>
+    
+    <script src="js/page2.js" defer></script>
 </body>
 </html>
