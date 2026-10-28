@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="grid grid-cols-1 md:grid-cols-[15%_85%] min-h-screen bg-gray-500 font-sans">
+<body class="grid grid-cols-1 md:grid-cols-[15%_85%] min-h-screen bg-zinc-950 font-sans">
 
-    <header class="bg-gray-500 md:h-screen md:sticky md:top-0 py-5 border-r-4">
+    <header class="bg-zinc-900 md:h-screen md:sticky md:top-0 py-5 border-r-4 border-amber-500">
         <img src="img/logo.png" alt="BusDirect" class="w-[80px]  ml-4">
         <nav aria-label="Navigation principale">
             <ul class="flex md:flex-col gap-2 mt-6 list-none p-0">
                 <li><a href="#index" aria-current="page"
-                        class="block text-white px-4 py-2 bg-white/15">Réservations</a></li>
+                        class="block text-black font-semibold px-4 py-2 bg-amber-500">Réservations</a></li>
                 <li><a href="bilets.html"
-                        class="block text-white px-4 py-2 hover:bg-white/15">Billets</a></li>
+                        class="block text-zinc-200 px-4 py-2 hover:bg-white/10">Billets</a></li>
             </ul>
         </nav>
     </header>
@@ -98,24 +98,24 @@
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6">
             
             <div id="seats"
-                class="grid grid-cols-[1fr_1fr_30px_1fr_1fr] gap-y-5 gap-x-5 w-full max-w-md mx-auto bg-gray-500 px-2 py-4">
+                class="grid grid-cols-[1fr_1fr_30px_1fr_1fr] gap-y-5 gap-x-5 w-full max-w-md mx-auto bg-zinc-900 rounded-2xl px-2 py-4">
             </div>
 
            
-            <div class="bg-white rounded-xl p-5 shadow-sm border-b-4 border-gray-500">
+            <div class="bg-white rounded-xl p-5 shadow-sm border-b-4 border-amber-500">
 
                 
                 <div class="flex w-full items-center gap-2 rounded-xl bg-gray-100 p-2 mb-5">
                     <button id="tab-reserve" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-zinc-700">
                         Réserver
                     </button>
                     <button id="tab-edit" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-zinc-700">
                         Modifier
                     </button>
                     <button id="tab-cancel" type="button"
-                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-gray-300">
+                        class="flex-1 min-w-0 rounded-lg bg-black px-2 py-3 text-sm font-semibold text-white text-center hover:bg-zinc-700">
                         Annuler
                     </button>
                 </div>
@@ -137,7 +137,7 @@
                             <input type="text" id="nom" name="nom"
                                 placeholder="Entrez le nom et prénom"
                                 autocomplete="off"
-                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                         </div>
                         
                         <div>
@@ -145,17 +145,17 @@
                                 Siège
                             </label>
                             <select id="seat-select" name="seat-select"
-                                class="w-full border border-gray-300 rounded-lg p-3 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                class="w-full border border-gray-300 rounded-lg p-3 bg-white outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                                 <option value="">Automatique (premier siège libre)</option>
                             </select>
                         </div>
                         
                         <button type="submit"
-                            class="w-full bg-black text-white rounded-lg p-3 font-semibold hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+                            class="w-full bg-amber-500 text-black rounded-lg p-3 font-semibold hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
                             <i class="fa-solid fa-ticket mr-2" aria-hidden="true"></i>
                             Confirmer la réservation
                         </button>
-                        
+                    
                         <p id="reserve-msg" role="status" aria-live="polite"
                             class="text-sm font-medium min-h-[1.25rem]"></p>
                     </form>
@@ -172,7 +172,7 @@
                             </label>
                             <input type="text" id="edit-name"
                                 placeholder="enter you name"
-                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500">
+                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                         </div>
                         <div>
                             <label for="edit-name" class="block text-sm font-medium mb-2">
@@ -180,20 +180,20 @@
                             </label>
                             <input type="text" id="new-name"
                                 placeholder="new name"
-                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500">
+                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                         </div>
                          <div>
                             <label for="newselect" class="block text-sm font-medium mb-2">
                                new Siège
                             </label>
                             <select id="newselect" name="new-select"
-                                class="w-full border border-gray-300 rounded-lg p-3 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
+                                class="w-full border border-gray-300 rounded-lg p-3 bg-white outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                                 <option value="">Automatique (premier siège libre)</option>
                             </select>
                         </div>
                         <button type="button"
                         id="btn-modifer"
-                            class="w-full bg-blue-600 text-white rounded-lg p-3 font-semibold hover:bg-blue-700">
+                            class="w-full bg-amber-500 text-black rounded-lg p-3 font-semibold hover:bg-amber-400">
                             Confirmer le Modifier
                         </button>
                         <p id="Modifier-msg" role="status" aria-live="polite"
@@ -211,7 +211,7 @@
                             </label>
                             <input type="text" id="cancel-name"
                                 placeholder="name "
-                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500">
+                                class="w-full border border-gray-300 rounded-lg p-3 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200">
                         </div>
 
                         <button type="button"
